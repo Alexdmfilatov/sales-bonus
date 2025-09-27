@@ -97,11 +97,6 @@ function analyzeSalesData(data, options) {
     record.items.forEach(item => {
         const product = productIndex[item.sku]; // Товар
 
-        if (!product) {
-            console.warn("Товар не найден:", item.sku);
-            return;
-        }
-
         // Посчитать себестоимость (cost) товара как product.purchase_price, умноженную на количество товаров из чека
         const quantity = Number(item.quantity) || 0;
         const cost = (Number(product.purchase_price) || 0) * quantity;
